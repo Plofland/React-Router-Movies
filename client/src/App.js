@@ -17,7 +17,7 @@ export default function App() {
         .then((response) => {
           // Study this response with a breakpoint or log statements
           // and set the response data as the 'movieList' slice of state
-          response.setMovieList();
+          setMovieList(response.data);
         })
         .catch((error) => {
           console.error("Server Error", error);
@@ -40,11 +40,11 @@ export default function App() {
         }
       />
 
-      <Route exact path={"/"}>
-        <MovieList props={movieList} />
+      <Route exact path="/">
+        <MovieList movies={movieList} />
       </Route>
-      <Route path={"Movies/:id"}>
-        <Movie props={saved} />
+      <Route path="/Movies/:id">
+        <Movie />
       </Route>
     </div>
   );
